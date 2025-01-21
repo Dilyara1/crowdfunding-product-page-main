@@ -86,7 +86,7 @@
             <p class="card__item-subtitle">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and 
               you’ll be added to a special Backer member list.</p>
             <h3 class="card__item-count"><span>101</span> left</h3>
-            <button class="card__item-button"> Select Reward</button>
+            <button class="card__item-button" onclick="openModal(2)"> Select Reward</button>
           </article>
           <article class="card__item">
             <div class="card__item-header">
@@ -96,7 +96,7 @@
             <p class="card__item-subtitle">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer 
               member list. Shipping is included.</p>
             <h3 class="card__item-count"><span>64</span> left</h3>
-            <button class="card__item-button"> Select Reward</button>
+            <button class="card__item-button" onclick="openModal(3)"> Select Reward</button>
           </article>
           <article class="card__item card__item--disabled">
             <div class="card__item-header">
@@ -252,7 +252,19 @@
       })
     })
 
-    function openModal() {
+    function openModal(value) {
+      console.log(value)
+      if (value) {
+        const label = Array.from(customRadios).find((label) => {
+          const input = label.querySelector('input[type="radio"]');
+          console.dir(input)
+          if (input.value === String(value)) {
+            input.checked = true
+            return label
+          }
+        })
+        label.parentElement.classList.add('card__item--selected')
+      }
       modal.style.display = "flex";
       document.body.style.overflow = "hidden";
     }
@@ -267,6 +279,10 @@
       modalCompleted.style.display = "none";
       document.body.style.overflow = "";
       customRadios.forEach((radio) => radio.parentElement.classList.remove('card__item--selected'));
+      const digitInputs = document.querySelectorAll('input[name="digit-input"]')
+      digitInputs.forEach((input) => {
+        input.value = ''
+      })
     }
 
     closeModalBtn.addEventListener("click", () => {
@@ -311,9 +327,14 @@
     const bookmark = document.querySelector('.card__bookmark')
 
     function handleBookmark() {
-      bookmark.classList.add('card__bookmark--active')
+      bookmark.classList.toggle('card__bookmark--active')
       const span = bookmark.querySelector('span')
-      span.textContent = 'Bookmarked'
+      console.log(bookmark.classList)
+      if(Array.from(bookmark.classList).includes('card__bookmark--active')) {
+        span.textContent = 'Bookmarked'
+      } else {
+        span.textContent = 'Bookmark'
+      }   
     }
   </script>
 </body>
