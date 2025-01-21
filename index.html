@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Crowdfunding product page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section class="hero">
+    <nav class="navbar">
+      <h1 class="navbar__logo">
+        <img src="./images/logo.svg" alt="crowdfund logo" />
+      </h1>
+      <button class="navbar__toggle">
+        <img class="navbar__toggle--open" src="./images/icon-hamburger.svg" alt="menu open" />
+        <img class="navbar__toggle--close" src="./images/icon-close-menu.svg" alt="menu close" />
+      </button>
+      <ul class="navbar__menu">
+        <li class="navbar__item"><a href="#about">About</a></li>
+        <li class="navbar__item"><a href="#discover">Discover</a></li>
+        <li class="navbar__item"><a href="#getstarted">Get Started</a></li>
+      </ul>
+    </nav>
+    <div class="overlay"></div>
+  </section>
+  <main>
+    <section id="getstarted">
+      <article class="card">
+        <div class="card__image">
+          <img src="./images/logo-mastercraft.svg" alt="Mastercraft Bamboo Monitor Riser" />
+        </div>
+        <h2 class="card__title">Mastercraft Bamboo Monitor Riser</h2>
+        <p class="card__subtitle">A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
+        <div class="card__action">
+          <button class="card__button" onclick="openModal()">Back this project</button>
+          <div class="card__bookmark" onclick="handleBookmark()">
+            <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#2F2F2F" cx="28" cy="28" r="28"/><path fill="#B1B1B1" d="M23 19v18l5-5.058L33 37V19z"/></g></svg>
+            <span>Bookmark</span>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section id="discover" class="stats">
+      <div class="stats__items">
+        <article class="stat">
+          <h2 class="stat__title">$89,914</h2>
+          <p class="stat__subtitle">of $100,000 backed</p>
+        </article>
+        <article class="stat">
+          <h2 class="stat__title">5,007</h2>
+          <p class="stat__subtitle">total backers</p>
+        </article>
+        <article class="stat">
+          <h2 class="stat__title">56</h2>
+          <p class="stat__subtitle">days left</p>
+        </article>
+      </div>
+      <progress class="progress"  aria-label="progress" value="80" max="100">
+        <div class="progress-bar">
+          <span style="width: 80%">80%</span>
+        </div>
+      </progress>
+    </section>
+    <section id="about">
+      <article class="card">
+        <h2 class="card__title">About this project</h2>
+        <p class="card__subtitle">The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen 
+          to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve 
+          your posture and make you more comfortable while at work, helping you stay focused on the task at hand. 
+          <br><br>
+          Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer 
+          to allow notepads, pens, and USB sticks to be stored under the stand.
+        </p>
+        <div class="card__items">
+          <article class="card__item">
+            <div class="card__item-header">
+              <h3 class="card__item-title"> Bamboo Stand</h3>
+              <h3 class="card__item-title card__item-title--accent">Pledge $25 or more</h3>
+            </div>
+            <p class="card__item-subtitle">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and 
+              you’ll be added to a special Backer member list.</p>
+            <h3 class="card__item-count"><span>101</span> left</h3>
+            <button class="card__item-button"> Select Reward</button>
+          </article>
+          <article class="card__item">
+            <div class="card__item-header">
+              <h3 class="card__item-title">Black Edition Stand</h3>
+              <h3 class="card__item-title card__item-title--accent"> Pledge $75 or more</h3>
+            </div>
+            <p class="card__item-subtitle">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer 
+              member list. Shipping is included.</p>
+            <h3 class="card__item-count"><span>64</span> left</h3>
+            <button class="card__item-button"> Select Reward</button>
+          </article>
+          <article class="card__item card__item--disabled">
+            <div class="card__item-header">
+              <h3 class="card__item-title"> 
+                Mahogany Special Edition</h3>
+              <h3 class="card__item-title card__item-title--accent">Pledge $200 or more</h3>
+            </div>
+            <p class="card__item-subtitle">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added 
+              to our Backer member list. Shipping is included.</p>
+            <h3 class="card__item-count"><span>0</span> left</h3>
+            <button class="card__item-button"> Out of Stock</button>
+          </article>
+        </div>
+      </article>
+    </section>
+  </main>
+  <div id="modal" class="modal">
+    
+    <div class="modal__content">
+      <div class="modal__header">
+        <h2 class="modal__title">Back this project</h2>
+        <div id="closeModalBtn" class="modal__close">
+          <img src="./images/icon-close-modal.svg" alt="close modal" />
+        </div>
+      </div>
+      <p class="modal__desc">
+        Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
+      </p>
+      <div class="card__items">
+        <article class="card__item">
+          <label class="custom-radio">
+            <input type="radio" name="option" value="1" />
+            <span class="custom-radio-check"></span>
+            <h3 class="card__item-title"> Pledge with no reward</h3>
+          </label>
+          <p class="card__item-subtitle">Choose to support us without a reward if you simply believe in our project. As a backer, 
+            you will be signed up to receive product updates via email.</p>
+            <div class="card__item-footer">
+              <button type="submit" class="card__item-button" onclick="openModalCompleted()">Continue</button>
+            </div>
+        </article>
+        <article class="card__item">
+          <label class="custom-radio">
+            <input type="radio" name="option" value="2" />
+            <span class="custom-radio-check"></span>
+            <div class="card__item-header">
+              <h3 class="card__item-title"> Bamboo Stand</h3>
+              <h3 class="card__item-title card__item-title--accent">Pledge $25 or more</h3>
+            </div>
+          </label>
+          <p class="card__item-subtitle">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and 
+            you’ll be added to a special Backer member list.</p>
+          <h3 class="card__item-count"><span>101</span> left</h3>
+          <div class="card__item-footer" onsubmit="">
+            <label> Enter your pledge</label>
+            <form class="card__item-form">
+              <div class="card__input-container">
+                <input type="text" name="digit-input" >
+                <span class="prefix" id="prefix">$</span>
+              </div>
+              <button type="submit" class="card__item-button">Continue</button>
+            </form>
+          </div>
+        </article>
+        <article class="card__item">
+          <label class="custom-radio">
+            <input type="radio" name="option" value="3" />
+            <span class="custom-radio-check"></span>
+            <div class="card__item-header">
+              <h3 class="card__item-title">Black Edition Stand</h3>
+              <h3 class="card__item-title card__item-title--accent"> Pledge $75 or more</h3>
+            </div>
+          </label>
+          <p class="card__item-subtitle">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer 
+            member list. Shipping is included.</p>
+          <h3 class="card__item-count"><span>64</span> left</h3>
+          <div class="card__item-footer" onsubmit="">
+            <label> Enter your pledge</label>
+            <form class="card__item-form">
+              <div class="card__input-container">
+                <input type="text" name="digit-input" >
+                <span class="prefix" id="prefix">$</span>
+              </div>
+              <button type="submit" class="card__item-button">Continue</button>
+            </form>
+          </div>
+        </article>
+        <article class="card__item card__item--disabled">
+          <label class="custom-radio">
+            <input type="radio" name="option" value="4"  disabled/>
+            <span class="custom-radio-check"></span>
+            <div class="card__item-header">
+              <h3 class="card__item-title"> 
+                Mahogany Special Edition</h3>
+              <h3 class="card__item-title card__item-title--accent">Pledge $200 or more</h3>
+            </div>
+          </label>
+          <p class="card__item-subtitle">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added 
+            to our Backer member list. Shipping is included.</p>
+          <h3 class="card__item-count"><span>0</span> left</h3>
+          <div class="card__item-footer" onsubmit="">
+            <label> Enter your pledge</label>
+            <form class="card__item-form">
+              <div class="card__input-container">
+                <input type="text" name="digit-input" >
+                <span class="prefix" id="prefix">$</span>
+              </div>
+              <button type="submit" class="card__item-button">Continue</button>
+            </form>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+  <div id="modal-success" class="modal">
+    <div class="modal__content">
+      <div class="modal__success">
+        <img src="./images/icon-check.svg" alt="success">
+        <h2 class="card__title"> Thanks for your support!</h2>
+        <p class="card__subtitle">Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
+         an email once our campaign is completed.</p>
+         <button class="card__item-button" onclick="closeModalCompleted()">  Got it!</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const navbarOpen = document.querySelector(".navbar__toggle--open")
+    const navbar = document.querySelector(".navbar")
+    const navbarMenu = document.querySelector(".navbar__menu")
+    const navbarClose = document.querySelector('.navbar__toggle--close')
+    const overlay = document.querySelector('.overlay')
+    const closeTriggers = [navbarClose,navbarMenu, overlay]
+    const modal = document.getElementById("modal");
+    const modalCompleted = document.getElementById("modal-success");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    navbarOpen.addEventListener('click',() => {
+      navbar.classList.add('open')
+      overlay.classList.add('overlay--active')
+      document.body.style.overflow = 'hidden'
+    })
+    
+    function closeNavbar() {
+      document.body.style.overflow = ''
+      navbar.classList.remove('open')
+      overlay.classList.remove('overlay--active')
+    }
+
+    closeTriggers.forEach((el) => {
+      el.addEventListener('click', () => {
+        closeNavbar()
+      })
+    })
+
+    function openModal() {
+      modal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function openModalCompleted() {
+      modalCompleted.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModalCompleted() {
+      modal.style.display = "none";
+      modalCompleted.style.display = "none";
+      document.body.style.overflow = "";
+      customRadios.forEach((radio) => radio.parentElement.classList.remove('card__item--selected'));
+    }
+
+    closeModalBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+      document.body.style.overflow = "";
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === modal || event.target === modalCompleted) {
+        modal.style.display = "none";
+        modalCompleted.style.display = "none"
+        document.body.style.overflow = "";
+      }
+    });
+
+    const customRadios = document.querySelectorAll('.custom-radio');
+
+    customRadios.forEach((label) => {
+      const input = label.querySelector('input[type="radio"]');
+      
+      input.addEventListener('change', (event) => {
+        customRadios.forEach((radio) => radio.parentElement.classList.remove('card__item--selected'));
+        label.parentElement.classList.add('card__item--selected');
+      });
+    });
+
+
+    const forms  = document.querySelectorAll('.card__item-form')
+    forms.forEach((form) => {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const inputField = form.querySelector('input[name="digit-input"]');
+        const inputValue = inputField ? inputField.value : '';
+        if (!/^\d+$/.test(inputValue)) {
+          alert('Please enter digits only!');
+          return;
+        } 
+        openModalCompleted()
+      })
+    })
+
+    const bookmark = document.querySelector('.card__bookmark')
+
+    function handleBookmark() {
+      bookmark.classList.add('card__bookmark--active')
+      const span = bookmark.querySelector('span')
+      span.textContent = 'Bookmarked'
+    }
+  </script>
+</body>
+</html>
