@@ -255,6 +255,7 @@
     function openModal(value) {
       console.log(value)
       if (value) {
+        customRadios.forEach((radio) => radio.parentElement.classList.remove('card__item--selected'));
         const label = Array.from(customRadios).find((label) => {
           const input = label.querySelector('input[type="radio"]');
           console.dir(input)
@@ -278,7 +279,11 @@
       modal.style.display = "none";
       modalCompleted.style.display = "none";
       document.body.style.overflow = "";
-      customRadios.forEach((radio) => radio.parentElement.classList.remove('card__item--selected'));
+      customRadios.forEach((radio) => {
+          radio.parentElement.classList.remove('card__item--selected')
+          const input = radio.querySelector('input[type="radio"]');
+          input.checked = false
+      });
       const digitInputs = document.querySelectorAll('input[name="digit-input"]')
       digitInputs.forEach((input) => {
         input.value = ''
@@ -293,6 +298,11 @@
     window.addEventListener("click", (event) => {
       if (event.target === modal || event.target === modalCompleted) {
         modal.style.display = "none";
+        customRadios.forEach((radio) => {
+          radio.parentElement.classList.remove('card__item--selected')
+          const input = radio.querySelector('input[type="radio"]');
+          input.checked = false
+        });
         modalCompleted.style.display = "none"
         document.body.style.overflow = "";
       }
